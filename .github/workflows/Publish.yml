@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Import GPG Owner Trust
-      run: echo RTgxNDVGRjY5ODhCNzcxRjRDQjk4MDA3OTU5QzI2RDNDOEREM0QzMzo2Og== | base64 --decode | gpg --import-ownertrust
+      run: RTgxNDVGRjY5ODhCNzcxRjRDQjk4MDA3OTU5QzI2RDNDOEREM0QzMzo2Og== | base64 --decode | gpg --import-ownertrust
 
     #- name: Import GPG key
     #  run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes
