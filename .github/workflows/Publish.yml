@@ -12,13 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Import GPG key
-      run: echo ${{secrets.GPG_SECRET_KEYS}} | gpg --import --no-tty --batch --yes
-
-    - name: Clean settings.xml
-      run: rm -rf ~/.m2/settings.xml
-
-    - name: Create settings.xml
-      uses: s4u/maven-settings-action@v1
-      with:
-        servers: '[{"id": "ossrh", "username": "${{secrets.SONATYPE_USERNAME}}", "password": "${{secrets.SONATYPE_PWD}}"}]'
+    - id: install-secret-key
+      name: Install GPG secret key
+      run: |
+        cat <(echo -e "${{ secrets.GPG_SECRET_KEYS }}") | gpg --batch --import
