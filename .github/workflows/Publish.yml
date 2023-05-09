@@ -15,8 +15,8 @@ jobs:
     - name: Import GPG Owner Trust
       run: ${{secrets.GPG_OWNERTRUST}} | base64 --decode | gpg --import-ownertrust
 
-    #- name: Import GPG key
-    #  run: echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes
+    - name: Import GPG key
+      run: ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes
 
     #- name: Clean settings.xml
     #  run: rm -rf ~/.m2/settings.xml
